@@ -5,7 +5,7 @@ coverage==6.4.4
 Django==4.1.1
 django-debug-toolbar==3.6.0
 django-environ==0.8.1
-django-filter==21.1
+django-filter==22.1
 django-money==3.0.0
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.2.0
