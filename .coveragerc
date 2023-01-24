@@ -1,0 +1,8 @@
+[run]
+source=apps/users/, apps/utility/, apps/commons/, apps/social_aut, apps/expenses, apps/incomes
+omit=
+    venv
+    */migrations/*
+    */tests/*
+    */tests*
+    */__init__.py
