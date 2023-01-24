@@ -127,9 +127,7 @@ ADMINS = [("Seunfunmi", "adegokeseunfunmi1999@gmail.com")]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.AllowAllUsersModelBackend"
-]
+AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.AllowAllUsersModelBackend"]
 
 ADMIN_URL = env.str("ADMIN_URL")
 
@@ -143,9 +141,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-    "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticated",
-    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "NON_FIELD_ERRORS_KEY": "error",
     "EXCEPTION_HANDLER": "apps.utility.custom_exception_handler.custom_exception_handler",
 }
@@ -168,3 +164,6 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
 }
+
+MONO_BASE_URL = env.str("MONO_BASE_URL")
+MONO_SECRET_KEY = env.str("MONO_SECRET_KEY")
