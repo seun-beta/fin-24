@@ -1,18 +1,21 @@
-FROM python:3.11.0rc2-alpine3.16
+# build stage
+FROM python:3.10-slim-bullseye as build
 
 WORKDIR /app
 
-RUN apk add --no-cache jpeg-dev zlib-dev
+RUN apt-get update && apt-get install -y --no-install-recommends gcc
 
-RUN apk add --no-cache --virtual .build-deps build-base linux-headers postgresql-dev  \
-    && pip install Pillow && pip install psycopg2
+COPY requirements requirements
 
-COPY requirements/* ./app/requirements/
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir wheels -r requirements/development.txt
 
-RUN pip install -r ./app/requirements/production.txt
 
-COPY . .
+# final stage
+FROM python:3.10-slim-bullseye
 
-ENV ENVIRONMENT=config.settings.development
+WORKDIR /app
 
-CMD ["python manage.py runserver"]
+COPY --from=build /app/wheels wheels
+COPY --from=build /app/requirements/development.txt .
+
+RUN pip install --no-cache wheels/*
