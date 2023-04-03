@@ -2,7 +2,7 @@ argon2-cffi==21.3.0
 celery==5.2.7
 cloudinary==1.29.0
 coverage==6.4.4
-Django==4.1.1
+Django==4.2
 django-debug-toolbar==3.6.0
 django-environ==0.8.1
 django-filter==21.1
